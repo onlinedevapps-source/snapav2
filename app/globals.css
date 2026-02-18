@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties ───────────────────────────────────────────────────── */
+:root {
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Talamus-inspired palette */
+  --color-bg: #FF3D00;
+  /* Vivid orange-red */
+  --color-bg-dark: #E63500;
+  /* Slightly deeper for depth */
+  --color-text: #000000;
+  /* Black on orange — high contrast */
+  --color-text-muted: rgba(0, 0, 0, 0.55);
+  --color-accent: #000000;
+}
+
+/* ── Base Reset ──────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ── Focus ───────────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Keyframes ───────────────────────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+/* ── Reduced Motion ──────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Selection ───────────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(0, 0, 0, 0.2);
+  color: #000;
+}

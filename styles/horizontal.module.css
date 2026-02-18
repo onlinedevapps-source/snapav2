@@ -1,0 +1,87 @@
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.track {
+    display: flex;
+    width: 400vw;
+    /* 4 sections */
+    height: 100%;
+}
+
+.section {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    /* Vertical centering is usually desired, but left horizontal alignment is key */
+    justify-content: flex-start !important;
+    padding: 0 8%;
+    /* Match Hero padding */
+    position: relative;
+    z-index: 1;
+}
+
+.content {
+    max-width: 800px;
+}
+
+.title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    /* Match Hero headline scale */
+    font-weight: 900;
+    color: #000;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #000;
+    opacity: 0.8;
+    max-width: 500px;
+    line-height: 1.4;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.gridItem {
+    border-top: 2px solid #000;
+    padding-top: 1rem;
+}
+
+.gridItem h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.contactInfo {
+    margin-top: 4rem;
+}
+
+.contactLink {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: opacity 0.2s;
+}
+
+.contactLink:hover {
+    opacity: 0.6;
+}
