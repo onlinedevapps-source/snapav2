@@ -85,3 +85,19 @@
 .contactLink:hover {
     opacity: 0.6;
 }
+
+/* ── Mobile Refinements ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .section {
+        padding: 0 6% !important;
+        /* Tighter padding for mobile */
+        width: 100vw !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+
+    .title {
+        font-size: clamp(2rem, 5vw, 3rem) !important;
+        margin-bottom: 1.5rem !important;
+    }
+}

@@ -23,6 +23,7 @@ const vertexShader = `
   uniform float uTime;
   uniform float uTransition;
   uniform vec2 uMouse;
+  uniform float uIsMobile;
   
   attribute float aSize;
   attribute vec3 aTarget;
@@ -120,7 +121,8 @@ const vertexShader = `
     pos.z += sin(uTime * 0.5 + aRandom * 10.0) * 20.0;
 
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-    gl_PointSize = aSize * (500.0 / -mvPosition.z);
+    float sizeMultiplier = mix(500.0, 800.0, uIsMobile);
+    gl_PointSize = aSize * (sizeMultiplier / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
     
     vOpacity = mix(0.1, 1.0, 1.0 - easedT * 0.5);
@@ -186,7 +188,11 @@ export function useThreeParticles(containerRef: React.RefObject<HTMLDivElement>)
             // Clustered sphere positions
             const phi = Math.acos(-1 + (2 * i) / PARTICLE_COUNT);
             const theta = Math.sqrt(PARTICLE_COUNT * Math.PI) * phi;
-            const r = 100 + Math.random() * 50;
+
+            // Responsive clustered sphere radius
+            const isMobile = window.innerWidth < 768;
+            const baseR = isMobile ? 180 : 100; // Wider spread on mobile to fill vertical screen
+            const r = baseR + Math.random() * 80;
 
             positions[i * 3] = r * Math.cos(theta) * Math.sin(phi) + Math.random() * 20;
             positions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi) + Math.random() * 20;
@@ -212,6 +218,7 @@ export function useThreeParticles(containerRef: React.RefObject<HTMLDivElement>)
                 uTime: { value: 0 },
                 uTransition: { value: 0 },
                 uMouse: { value: mouseRef.current },
+                uIsMobile: { value: window.innerWidth < 768 ? 1.0 : 0.0 },
             },
             vertexShader,
             fragmentShader,
@@ -232,6 +239,10 @@ export function useThreeParticles(containerRef: React.RefObject<HTMLDivElement>)
             cameraRef.current.aspect = width / height;
             cameraRef.current.updateProjectionMatrix();
             rendererRef.current.setSize(width, height);
+
+            if (materialRef.current) {
+                materialRef.current.uniforms.uIsMobile.value = width < 768 ? 1.0 : 0.0;
+            }
         };
         window.addEventListener('resize', handleResize);
 

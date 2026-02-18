@@ -97,3 +97,21 @@
   height: 1px;
   background: rgba(0, 0, 0, 0.3);
 }
+
+/* ── Mobile Refinements ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+    line-height: 1.1;
+  }
+
+  .description {
+    font-size: 0.95rem !important;
+    max-width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .scrollIndicator {
+    display: none !important;
+  }
+}
