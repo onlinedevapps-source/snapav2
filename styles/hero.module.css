@@ -1,22 +1,20 @@
 /**
  * hero.module.css
- * ---------------
- * Standardized classes for the Hero Section
  */
 
 .content {
   position: relative;
   z-index: 10;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   align-items: flex-start !important;
   justify-content: center;
-  text-align: left;
-  padding: 0;
-  width: 100%;
+  text-align: left !important;
+  padding: 0 !important;
+  width: 100% !important;
   max-width: 800px;
-  pointer-events: none;
   margin: 0 !important;
+  pointer-events: none;
 }
 
 .content>* {
@@ -24,11 +22,11 @@
 }
 
 .textWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  width: 100% !important;
 }
 
 .title {
@@ -36,27 +34,46 @@
   line-height: 0.95;
   letter-spacing: -0.04em;
   color: #000000;
-  margin: 0;
+  margin: 0 0 1.25rem 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .description {
   font-weight: 400;
   color: rgba(0, 0, 0, 0.7);
   line-height: 1.6;
+  font-size: 1.1rem;
+  max-width: 440px;
+  margin-bottom: 2.25rem;
+}
+
+.serviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  font-weight: 700;
+  border-l: 2px solid #000;
+  padding-left: 1.25rem;
+  text-align: left;
 }
 
 .ctaWrapper {
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-top: 1rem;
+  justify-content: flex-start;
 }
 
 .ctaButton {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.75rem;
   border-radius: 9999px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -71,8 +88,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: #FF3D00;
   color: #000;
@@ -100,15 +117,26 @@
 
 /* ── Mobile Refinements ──────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
+  .content {
+    max-width: 100% !important;
+  }
+
   .title {
-    font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+    font-size: clamp(1.85rem, 8vw, 2.5rem) !important;
     line-height: 1.1;
+    margin-bottom: 1rem !important;
   }
 
   .description {
     font-size: 0.95rem !important;
     max-width: 100% !important;
     margin-bottom: 1.5rem !important;
+    line-height: 1.4;
+  }
+
+  .serviceList {
+    margin-bottom: 1.5rem !important;
+    padding-left: 1rem !important;
   }
 
   .scrollIndicator {

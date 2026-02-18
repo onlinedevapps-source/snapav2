@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from '../styles/hero.module.css';
+import stylesH from '../styles/horizontal.module.css';
 
 /**
  * HeroSection (Content Only)
@@ -10,48 +11,24 @@ import styles from '../styles/hero.module.css';
  */
 const HeroSection = () => {
     return (
-        <section
-            style={{
-                width: '100vw',
-                height: '100vh',
-                flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start', // FORCED LEFT
-                padding: '0 8%',
-                position: 'relative',
-                zIndex: 1,
-                textAlign: 'left'
-            }}
-        >
-            <div
-                className={styles.content}
-                style={{
-                    textAlign: 'left',
-                    alignItems: 'flex-start', // FORCED LEFT
-                    display: 'flex',
-                    flexDirection: 'column',
-                    margin: '0', // REMOVE AUTO MARGINS
-                    width: 'auto',
-                    maxWidth: '800px'
-                }}
-            >
-                <div className={styles.textWrapper} style={{ textAlign: 'left', alignItems: 'flex-start' }}>
-                    <h1 className={styles.title} style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1.25rem', textAlign: 'left', width: '100%' }}>
+        <section className={stylesH.section}>
+            <div className={styles.content}>
+                <div className={styles.textWrapper}>
+                    <h1 className={styles.title}>
                         Elevating Life <br />Through Technology
                     </h1>
-                    <p className={styles.description} style={{ maxWidth: '440px', fontSize: '1.1rem', marginBottom: '2.25rem', opacity: 0.85, textAlign: 'left' }}>
+                    <p className={styles.description}>
                         Design, Build, and Integrate: High-performance smart systems for luxury homes and professional spaces.
                     </p>
 
-                    <div className="flex flex-col gap-2 mb-10 opacity-70 uppercase tracking-widest text-[10px] font-bold border-l-2 border-black pl-5" style={{ textAlign: 'left', alignItems: 'flex-start' }}>
+                    <div className={styles.serviceList}>
                         <span>• Smart Home Automation</span>
                         <span>• Immersive Home Theaters</span>
                         <span>• Professional AV Solutions</span>
                         <span>• Lighting & Security Controls</span>
                     </div>
 
-                    <div className={styles.ctaWrapper} style={{ justifyContent: 'flex-start' }}>
+                    <div className={styles.ctaWrapper}>
                         <button className={styles.ctaButton}>
                             <span>Our Portfolio</span>
                             <div className={styles.iconCircle}>
@@ -63,7 +40,7 @@ const HeroSection = () => {
                     </div>
                 </div>
 
-                <div className={styles.scrollIndicator} style={{ left: '0', transform: 'none' }}>
+                <div className={styles.scrollIndicator}>
                     <div className={styles.scrollLine} />
                     <span>Scroll to explore</span>
                 </div>
